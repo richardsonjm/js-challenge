@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>BuildingBlok JS Challenge</title>
+    <script type="text/javascript">
+      window.ourapp = {
+        successRate: 0.7,
+        offline: false,
+        results: []
+      };
+
+      function _failure(record) {
+        ourapp.results.push({saved: false, record: record, at: Date()});
+      }
+
+      function _success(record) {
+        ourapp.results.push({saved: true, record: record, at: Date()});
+      }
+
+      function saveRecord(record) {
+        if(ourapp.offline || Math.random() >= ourapp.successRate) {
+          _failure(record);
+          return false;
+        } else {
+          _success(record);
+          return true;
+        }
+      }
+
+      function toggleOffline() {
+        ourapp.offline = !ourapp.offline;
+        document.getElementById('status').innerText = ourapp.offline ? 'Offline' : 'Online';
+      }
+    </script>
+  </head>
+  <body>
+    <div>Status:
+      <span id="status">Online</span>
+    </div>
+    <button onclick="toggleOffline()">Toggle Offline</button>
+  </body>
+</html>
