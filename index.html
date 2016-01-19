@@ -1,41 +1,46 @@
 <html>
   <head>
     <title>BuildingBlok JS Challenge</title>
-    <script type="text/javascript">
-      window.ourapp = {
-        successRate: 0.7,
-        offline: false,
-        results: []
-      };
-
-      function _failure(record) {
-        ourapp.results.push({saved: false, record: record, at: Date()});
-      }
-
-      function _success(record) {
-        ourapp.results.push({saved: true, record: record, at: Date()});
-      }
-
-      function saveRecord(record) {
-        if(ourapp.offline || Math.random() >= ourapp.successRate) {
-          _failure(record);
-          return false;
-        } else {
-          _success(record);
-          return true;
-        }
-      }
-
-      function toggleOffline() {
-        ourapp.offline = !ourapp.offline;
-        document.getElementById('status').innerText = ourapp.offline ? 'Offline' : 'Online';
-      }
-    </script>
+    <script src="index.js"></script>
   </head>
   <body>
     <div>Status:
       <span id="status">Online</span>
     </div>
-    <button onclick="toggleOffline()">Toggle Offline</button>
+
+    <div>
+      <button onclick="toggleOffline()">Toggle Offline</button>
+    </div></br>
+
+    <form>
+      <div>
+        <input autofocus="autofocus" id="input-1" name="input[1]" placeholder="Input One" type="text" value="">
+      </div>
+      <div>
+        <input autofocus="autofocus" id="input-2" name="input[2]" placeholder="Input Two" type="text" value="">
+      </div>
+      <div>
+        <input autofocus="autofocus" id="input-3" name="input[3]" placeholder="Input Three" type="text" value="">
+      </div>
+      <div>
+        <button onclick="event.preventDefault(); queFormValues([1,2,3])">Save Form A</button>
+      </div>
+    </form>
+
+    <form>
+      <div>
+        <input autofocus="autofocus" id="input-4" name="input[4]" placeholder="Input One" type="text" value="">
+      </div>
+      <div>
+        <input autofocus="autofocus" id="input-5" name="input[5]" placeholder="Input Two" type="text" value="">
+      </div>
+      <div>
+        <input autofocus="autofocus" id="input-6" name="input[6]" placeholder="Input Three" type="text" value="">
+      </div>
+      <div>
+        <button onclick="event.preventDefault(); queFormValues([4,5,6])">Save Form B</button>
+      </div>
+    </form>
+
   </body>
 </html>
