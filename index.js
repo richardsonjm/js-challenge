@@ -51,6 +51,7 @@ function processCache() {
       }
     }
   }
+  displayResults();
 }
 
 function saveAndDeleteFromCache(record) {
@@ -59,5 +60,15 @@ function saveAndDeleteFromCache(record) {
     return true;
   } else {
     return false;
+  }
+}
+
+function displayResults () {
+  var resultsLength = ourapp.results.length;
+  for (var i = 0; i < resultsLength; i++) {
+    var div = document.createElement("div");
+    var t = document.createTextNode(JSON.stringify(ourapp.results[i]));
+    div.appendChild(t);
+    document.body.appendChild(div);
   }
 }
